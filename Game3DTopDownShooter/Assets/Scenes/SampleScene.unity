@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737c7d48eb0cce74fb86f38af5fb4498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
+  walkSpeed: 2
   gravityScale: 9.81
   aimLayerMask:
     serializedVersion: 2
