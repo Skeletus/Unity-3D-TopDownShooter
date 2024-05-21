@@ -29,16 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        controls = new PlayerControls();
-
-        controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
-        controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
-
-        controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
-        controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
-
-        controls.Character.Run.performed += context => { speed = runSpeed; isRunning = true; };
-        controls.Character.Run.canceled += context => { speed = walkSpeed; isRunning = false; };
+        AssignInputEvents();
     }
 
     private void Start()
@@ -101,7 +92,28 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("xVelocity", xVelocity, .1f, Time.deltaTime);
         animator.SetFloat("zVelocity", zVelocity, .1f, Time.deltaTime);
-        animator.SetBool("IsRunning", isRunning);
+
+        bool playRunAnimation = isRunning && movementDirection.magnitude > 0;
+        animator.SetBool("IsRunning", playRunAnimation);
+    }
+
+    #region NEW_INPUT_SYSTEM
+    private void AssignInputEvents()
+    {
+        controls = new PlayerControls();
+
+        controls.Character.Movement.performed += context => moveInput = context.ReadValue<Vector2>();
+        controls.Character.Movement.canceled += context => moveInput = Vector2.zero;
+
+        controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
+        controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
+
+        controls.Character.Run.performed += context =>
+        {
+            speed = runSpeed;
+            isRunning = true;
+        };
+        controls.Character.Run.canceled += context => { speed = walkSpeed; isRunning = false; };
     }
 
     private void OnEnable()
@@ -113,4 +125,5 @@ public class PlayerMovement : MonoBehaviour
     {
         controls.Disable();
     }
+    #endregion NEW_INPUT_SYSTEM
 }
