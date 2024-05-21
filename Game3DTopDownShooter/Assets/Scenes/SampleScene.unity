@@ -1244,7 +1244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737c7d48eb0cce74fb86f38af5fb4498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
+  walkSpeed: 1.5
+  runSpeed: 4
   gravityScale: 9.81
   aimLayerMask:
     serializedVersion: 2
@@ -1431,6 +1432,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6866636230bd8424fbaf6ecd46940fd5, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 78fc0d1865aeaa84a9a89b3328776976, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

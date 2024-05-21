@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement info")]
     [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
     [SerializeField] private float gravityScale;
+    private float speed;
     private Vector3 movementDirection;
     private float verticalVelocity;
+    private bool isRunning;
 
     [Header("Aim info")]
     [SerializeField] private LayerMask aimLayerMask;
@@ -33,13 +36,17 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Character.Aim.performed += context => aimInput = context.ReadValue<Vector2>();
         controls.Character.Aim.canceled += context => aimInput = Vector2.zero;
-        //controls.Character.Fire.performed += context => Shoot();
+
+        controls.Character.Run.performed += context => { speed = runSpeed; isRunning = true; };
+        controls.Character.Run.canceled += context => { speed = walkSpeed; isRunning = false; };
     }
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+
+        speed = walkSpeed;
     }
 
     private void Update()
@@ -70,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementDirection.magnitude > 0)
         {
-            characterController.Move(movementDirection * Time.deltaTime * walkSpeed);
+            characterController.Move(movementDirection * Time.deltaTime * speed);
         }
     }
 
@@ -94,11 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("xVelocity", xVelocity, .1f, Time.deltaTime);
         animator.SetFloat("zVelocity", zVelocity, .1f, Time.deltaTime);
-    }
-
-    private void Shoot()
-    {
-        Debug.Log("Shot");
+        animator.SetBool("IsRunning", isRunning);
     }
 
     private void OnEnable()
