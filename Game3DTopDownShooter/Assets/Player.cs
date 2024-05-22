@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerControls playerControls;
+    public PlayerControls controls;
 
     private void Awake()
     {
-        playerControls = new PlayerControls();
+        controls = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        controls.Enable();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        controls.Disable();
     }
 }
