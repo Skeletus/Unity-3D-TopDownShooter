@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Player player;
     private PlayerControls controls;
     private CharacterController characterController;
     private Animator animator;
@@ -27,17 +28,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 aimInput;
 
-    private void Awake()
-    {
-        AssignInputEvents();
-    }
-
     private void Start()
     {
+        player = GetComponent<Player>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
 
         speed = walkSpeed;
+        AssignInputEvents();
     }
 
     private void Update()
@@ -105,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     #region NEW_INPUT_SYSTEM
     private void AssignInputEvents()
     {
-        controls = new PlayerControls();
+        controls = player.playerControls;
 
         controls.Character.Fire.performed += context => Shoot();
 
@@ -121,16 +119,6 @@ public class PlayerMovement : MonoBehaviour
             isRunning = true;
         };
         controls.Character.Run.canceled += context => { speed = walkSpeed; isRunning = false; };
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
     #endregion NEW_INPUT_SYSTEM
 }
