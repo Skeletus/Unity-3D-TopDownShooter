@@ -227,6 +227,7 @@ MonoBehaviour:
   autoRifle: {fileID: 564352554}
   shotgun: {fileID: 2060780584}
   rifle: {fileID: 1455069249}
+  leftHand: {fileID: 705528947}
 --- !u!1 &291632220
 GameObject:
   m_ObjectHideFlags: 0
