@@ -438,7 +438,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Shotgun Weapon Layer
     m_StateMachine: {fileID: -4710271436903110604}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: c032d95704976144caf145cb07d11f0b, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -450,7 +450,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Rifle Weapon Layer
     m_StateMachine: {fileID: -6167546120700475232}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: c032d95704976144caf145cb07d11f0b, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
