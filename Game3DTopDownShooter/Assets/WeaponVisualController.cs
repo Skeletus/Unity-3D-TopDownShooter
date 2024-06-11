@@ -22,7 +22,7 @@ public class WeaponVisualController : MonoBehaviour
     private void Start()
     {
         SwitchOn(pistol);
-        animator = GetComponentInParent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
