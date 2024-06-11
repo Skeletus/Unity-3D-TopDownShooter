@@ -457,7 +457,13 @@ AnimatorController:
     m_Name: Rifle Weapon Layer
     m_StateMachine: {fileID: -6167546120700475232}
     m_Mask: {fileID: 31900000, guid: c032d95704976144caf145cb07d11f0b, type: 2}
-    m_Motions: []
+    m_Motions:
+    - serializedVersion: 2
+      m_State: {fileID: -2420587223148858277}
+      m_Motion: {fileID: -203655887218126122, guid: b3eafc5c34262494482ffc3d67993c5c, type: 3}
+    - serializedVersion: 2
+      m_State: {fileID: 6349472760780059378}
+      m_Motion: {fileID: -203655887218126122, guid: 16893f26da5617e41a1e07af0caa38c8, type: 3}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 1
