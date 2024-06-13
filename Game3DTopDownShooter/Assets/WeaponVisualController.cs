@@ -15,6 +15,10 @@ public class WeaponVisualController : MonoBehaviour
 
     private Transform currentGun;
 
+    [Header("Rig")]
+    [SerializeField] private float rigIncreaseStep;
+    private bool rigShouldBeIncreased;
+
     [Header("Left Hand IK")]
     [SerializeField] private Transform leftHand;
 
@@ -36,6 +40,21 @@ public class WeaponVisualController : MonoBehaviour
         {
             animator.SetTrigger("Reload");
             rig.weight = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            rigShouldBeIncreased = true;
+        }
+
+        if (rigShouldBeIncreased)
+        {
+            rig.weight += rigIncreaseStep * Time.deltaTime;
+
+            if (rig.weight >= 1)
+            {
+                rigShouldBeIncreased = false;
+            }
         }
     }
 
