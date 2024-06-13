@@ -58,6 +58,11 @@ public class WeaponVisualController : MonoBehaviour
         }
     }
 
+    public void ReturnRigWeightToOne()
+    {
+        rigShouldBeIncreased = true;
+    }
+
     private void WeaponSwitch()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) // 1 in keyboard
