@@ -39,12 +39,7 @@ public class WeaponVisualController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             animator.SetTrigger("Reload");
-            rig.weight = 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            rigShouldBeIncreased = true;
+            rig.weight = .15f;
         }
 
         if (rigShouldBeIncreased)
