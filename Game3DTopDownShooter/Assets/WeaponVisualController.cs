@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+public enum GrabType
+{
+    SideGrab,
+    BackGrab
+};
+
 public class WeaponVisualController : MonoBehaviour
 {
     [SerializeField] private Transform[] gunsList;
@@ -39,7 +45,7 @@ public class WeaponVisualController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             animator.SetTrigger("Reload");
-            rig.weight = .15f;
+            PauseRig();
         }
 
         if (rigShouldBeIncreased)
@@ -53,6 +59,18 @@ public class WeaponVisualController : MonoBehaviour
         }
     }
 
+    private void PauseRig()
+    {
+        rig.weight = .15f;
+    }
+
+    private void PlayWeaponGrabAnimation(GrabType grabType)
+    {
+        PauseRig();
+        animator.SetFloat("WeaponGrabType", ((float)grabType));
+        animator.SetTrigger("WeaponGrab");
+    }
+
     public void ReturnRigWeightToOne()
     {
         rigShouldBeIncreased = true;
@@ -64,26 +82,31 @@ public class WeaponVisualController : MonoBehaviour
         {
             SwitchOn(pistol);
             SwitchAnimationLayer(1);
+            PlayWeaponGrabAnimation(GrabType.SideGrab);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) // 2 in keyboard
         {
             SwitchOn(revolver);
             SwitchAnimationLayer(1);
+            PlayWeaponGrabAnimation(GrabType.SideGrab);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) // 3 in keyboard
         {
             SwitchOn(autoRifle);
             SwitchAnimationLayer(1);
+            PlayWeaponGrabAnimation(GrabType.BackGrab);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4)) // 4 in keyboard
         {
             SwitchOn(shotgun);
             SwitchAnimationLayer(2);
+            PlayWeaponGrabAnimation(GrabType.BackGrab);
         }
         if (Input.GetKeyDown(KeyCode.Alpha5)) // 5 in keyboard
         {
             SwitchOn(rifle);
             SwitchAnimationLayer(3);
+            PlayWeaponGrabAnimation(GrabType.BackGrab);
         }
     }
 
