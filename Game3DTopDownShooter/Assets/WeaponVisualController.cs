@@ -28,6 +28,8 @@ public class WeaponVisualController : MonoBehaviour
     [Header("Left Hand IK")]
     [SerializeField] private TwoBoneIKConstraint leftHandIK;
     [SerializeField] private Transform leftHandIKTarget;
+    [SerializeField] private float leftHandIKIncreaseStep;
+    private bool shouldIncreaseLeftHandIKWeight;
 
     private Animator animator;
     private Rig rig;
@@ -49,6 +51,25 @@ public class WeaponVisualController : MonoBehaviour
             PauseRig();
         }
 
+        UpdateRigWeight();
+        UpdateLeftHandIKWeight();
+    }
+
+    private void UpdateLeftHandIKWeight()
+    {
+        if (shouldIncreaseLeftHandIKWeight)
+        {
+            leftHandIK.weight += leftHandIKIncreaseStep * Time.deltaTime;
+
+            if (leftHandIK.weight >= 1)
+            {
+                shouldIncreaseLeftHandIKWeight = false;
+            }
+        }
+    }
+
+    private void UpdateRigWeight()
+    {
         if (rigShouldBeIncreased)
         {
             rig.weight += rigIncreaseStep * Time.deltaTime;
@@ -76,6 +97,11 @@ public class WeaponVisualController : MonoBehaviour
     public void ReturnRigWeightToOne()
     {
         rigShouldBeIncreased = true;
+    }
+
+    public void ReturnLeftHandIKWeight()
+    {
+        shouldIncreaseLeftHandIKWeight = true;
     }
 
     private void WeaponSwitch()

@@ -21,5 +21,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void WeaponGrabIsOver()
     {
         weaponVisualController.ReturnRigWeightToOne();
+        weaponVisualController.ReturnLeftHandIKWeight();
     }
 }
