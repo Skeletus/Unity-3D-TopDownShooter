@@ -26,7 +26,8 @@ public class WeaponVisualController : MonoBehaviour
     private bool rigShouldBeIncreased;
 
     [Header("Left Hand IK")]
-    [SerializeField] private Transform leftHand;
+    [SerializeField] private TwoBoneIKConstraint leftHandIK;
+    [SerializeField] private Transform leftHandIKTarget;
 
     private Animator animator;
     private Rig rig;
@@ -66,6 +67,7 @@ public class WeaponVisualController : MonoBehaviour
 
     private void PlayWeaponGrabAnimation(GrabType grabType)
     {
+        leftHandIK.weight = 0f;
         PauseRig();
         animator.SetFloat("WeaponGrabType", ((float)grabType));
         animator.SetTrigger("WeaponGrab");
@@ -132,8 +134,8 @@ public class WeaponVisualController : MonoBehaviour
     {
         Transform targetTransform = currentGun.GetComponentInChildren<LeftHandTargetTransform>().transform;
 
-        leftHand.localPosition = targetTransform.localPosition;
-        leftHand.localRotation = targetTransform.localRotation;
+        leftHandIKTarget.localPosition = targetTransform.localPosition;
+        leftHandIKTarget.localRotation = targetTransform.localRotation;
     }
 
     private void SwitchAnimationLayer(int layerIndex)
