@@ -34,6 +34,8 @@ public class WeaponVisualController : MonoBehaviour
     private Animator animator;
     private Rig rig;
 
+    private bool busyGrabbingWeapon;
+
     private void Start()
     {
         SwitchOn(pistol);
@@ -45,7 +47,7 @@ public class WeaponVisualController : MonoBehaviour
     {
         WeaponSwitch();
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && busyGrabbingWeapon == false)
         {
             animator.SetTrigger("Reload");
             PauseRig();
@@ -92,6 +94,13 @@ public class WeaponVisualController : MonoBehaviour
         PauseRig();
         animator.SetFloat("WeaponGrabType", ((float)grabType));
         animator.SetTrigger("WeaponGrab");
+        SetBusyGrabbingWeapon(true);
+    }
+
+    public void SetBusyGrabbingWeapon(bool isBusy)
+    {
+        busyGrabbingWeapon = isBusy;
+        animator.SetBool("BusyGrabbingWeapon", busyGrabbingWeapon);
     }
 
     public void ReturnRigWeightToOne()

@@ -18,9 +18,14 @@ public class PlayerAnimationEvents : MonoBehaviour
         // re-fill bullet
     }
 
-    public void WeaponGrabIsOver()
+    public void ReturnRig()
     {
         weaponVisualController.ReturnRigWeightToOne();
         weaponVisualController.ReturnLeftHandIKWeight();
+    }
+
+    public void WeaponGrabIsOver()
+    {
+        weaponVisualController.SetBusyGrabbingWeapon(false);
     }
 }
