@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
-    private WeaponVisualController weaponVisualController;
+    private PlayerWeaponVisuals weaponVisualController;
 
     private void Start()
     {
-        weaponVisualController = GetComponentInParent<WeaponVisualController>();
+        weaponVisualController = GetComponentInParent<PlayerWeaponVisuals>();
     }
 
     public void ReloadIsOver()

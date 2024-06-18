@@ -9,7 +9,7 @@ public enum GrabType
     BackGrab
 };
 
-public class WeaponVisualController : MonoBehaviour
+public class PlayerWeaponVisuals : MonoBehaviour
 {
     private Animator animator;
     private bool isGrabbingWeapon;
