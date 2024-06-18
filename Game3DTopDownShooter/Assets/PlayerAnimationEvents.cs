@@ -13,15 +13,15 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void ReloadIsOver()
     {
-        weaponVisualController.ReturnRigWeightToOne();
+        weaponVisualController.MaximizeRigWeight();
 
         // re-fill bullet
     }
 
     public void ReturnRig()
     {
-        weaponVisualController.ReturnRigWeightToOne();
-        weaponVisualController.ReturnLeftHandIKWeight();
+        weaponVisualController.MaximizeRigWeight();
+        weaponVisualController.MaximizeLeftHandWeight();
     }
 
     public void WeaponGrabIsOver()
