@@ -1949,6 +1949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629620260}
   - component: {fileID: 1629620261}
+  - component: {fileID: 1629620264}
   - component: {fileID: 1629620259}
   - component: {fileID: 1629620262}
   - component: {fileID: 1629620258}
@@ -2072,6 +2073,18 @@ MonoBehaviour:
   leftHandIK: {fileID: 451085223}
   leftHandIKTarget: {fileID: 705528947}
   leftHandIKWeightIncreaseRate: 2.5
+--- !u!114 &1629620264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629620257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20182616fa3cdf41bff946a334eafc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1702898574
 GameObject:
   m_ObjectHideFlags: 0

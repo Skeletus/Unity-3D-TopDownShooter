@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerControls controls;
+    public PlayerControls controls { get; private set; }
+    public PlayerAim playerAim { get; private set; } // read only
 
     private void Awake()
     {
         controls = new PlayerControls();
+        playerAim = GetComponent<PlayerAim>();
     }
 
     private void OnEnable()
