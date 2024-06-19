@@ -2002,10 +2002,6 @@ MonoBehaviour:
   walkSpeed: 1.5
   runSpeed: 4
   gravityScale: 9.81
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  aim: {fileID: 680102083}
 --- !u!4 &1629620260
 Transform:
   m_ObjectHideFlags: 0
@@ -2085,6 +2081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20182616fa3cdf41bff946a334eafc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimLayerMask:
+    serializedVersion: 2
+    m_Bits: 192
+  aim: {fileID: 680102083}
 --- !u!1 &1702898574
 GameObject:
   m_ObjectHideFlags: 0
