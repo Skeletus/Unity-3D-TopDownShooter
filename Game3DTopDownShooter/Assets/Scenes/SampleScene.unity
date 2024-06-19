@@ -2002,6 +2002,7 @@ MonoBehaviour:
   walkSpeed: 1.5
   runSpeed: 4
   gravityScale: 9.81
+  turnSpeed: 7.4
 --- !u!4 &1629620260
 Transform:
   m_ObjectHideFlags: 0
