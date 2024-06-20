@@ -11,7 +11,7 @@ public class PlayerAim : MonoBehaviour
     [Range(.5f, 1f)]
     [SerializeField] private float minCameraDistance = 1.5f;
 
-    [Range(1f, 1.5f)]
+    [Range(1f, 3f)]
     [SerializeField] private float maxCameraDistance = 4f;
 
     [Range(3f, 5f)]

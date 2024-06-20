@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     private float verticalVelocity;
 
+    public Vector2 moveInput { get; private set; }
     private Vector3 movementDirection;
-    private Vector2 moveInput;
     
     private bool isRunning;
 
