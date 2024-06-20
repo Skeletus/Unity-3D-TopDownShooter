@@ -8,9 +8,13 @@ public class PlayerAim : MonoBehaviour
     private PlayerControls controls;
 
     [Header("Aim info")]
-    [SerializeField] private LayerMask aimLayerMask;
+    [SerializeField] private float minCameraDistance = 1.5f;
+    [SerializeField] private float maxCameraDistance = 4f;
+    [SerializeField] private float aimSensitivity = 5f;
+
     [SerializeField] private Transform aim;
-    private Vector3 lookingDirection;
+    [SerializeField] private LayerMask aimLayerMask;
+
     private Vector2 aimInput;
 
     private void Start()
@@ -21,10 +25,31 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        aim.position = new Vector3(
-            GetMousePosition().x,
-            transform.position.y + 1,
-            GetMousePosition().z);
+        aim.position = Vector3.Lerp(
+            aim.position,
+            DesiredAimPosition(),
+            aimSensitivity * Time.deltaTime);
+    }
+
+    private Vector3 DesiredAimPosition()
+    {
+        Vector3 desiredAimPosition = GetMousePosition();
+        Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
+
+        float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
+
+        if (distanceToDesiredPosition > maxCameraDistance)
+        {
+            desiredAimPosition = transform.position + aimDirection * maxCameraDistance;
+        }
+        else if (distanceToDesiredPosition < minCameraDistance)
+        {
+            desiredAimPosition = transform.position + aimDirection * minCameraDistance;
+        }
+
+        desiredAimPosition.y = transform.position.y + 1;
+
+        return desiredAimPosition;
     }
 
     public Vector3 GetMousePosition()
