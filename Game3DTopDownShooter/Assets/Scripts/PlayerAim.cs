@@ -8,9 +8,16 @@ public class PlayerAim : MonoBehaviour
     private PlayerControls controls;
 
     [Header("Aim info")]
+    [Range(.5f, 1f)]
     [SerializeField] private float minCameraDistance = 1.5f;
+
+    [Range(1f, 1.5f)]
     [SerializeField] private float maxCameraDistance = 4f;
+
+    [Range(3f, 5f)]
     [SerializeField] private float aimSensitivity = 5f;
+
+    [Space]
 
     [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayerMask;
@@ -37,16 +44,9 @@ public class PlayerAim : MonoBehaviour
         Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
 
         float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
+        float clampedDistance = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, maxCameraDistance);
 
-        if (distanceToDesiredPosition > maxCameraDistance)
-        {
-            desiredAimPosition = transform.position + aimDirection * maxCameraDistance;
-        }
-        else if (distanceToDesiredPosition < minCameraDistance)
-        {
-            desiredAimPosition = transform.position + aimDirection * minCameraDistance;
-        }
-
+        desiredAimPosition = transform.position + aimDirection * clampedDistance;
         desiredAimPosition.y = transform.position.y + 1;
 
         return desiredAimPosition;

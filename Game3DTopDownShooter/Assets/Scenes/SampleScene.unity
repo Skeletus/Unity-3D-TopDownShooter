@@ -2082,9 +2082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20182616fa3cdf41bff946a334eafc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCameraDistance: 1.5
-  maxCameraDistance: 4
-  aimSensitivity: 3
+  minCameraDistance: 1
+  maxCameraDistance: 1.5
+  aimSensitivity: 3.76
   aim: {fileID: 680102083}
   aimLayerMask:
     serializedVersion: 2
