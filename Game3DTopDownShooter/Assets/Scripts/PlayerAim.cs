@@ -40,11 +40,13 @@ public class PlayerAim : MonoBehaviour
 
     private Vector3 DesiredAimPosition()
     {
+        float actualMaxCameraDistance = player.movement.moveInput.y < -.5f ? minCameraDistance : maxCameraDistance;
+        
         Vector3 desiredAimPosition = GetMousePosition();
         Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
 
         float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
-        float clampedDistance = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, maxCameraDistance);
+        float clampedDistance = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, actualMaxCameraDistance);
 
         desiredAimPosition = transform.position + aimDirection * clampedDistance;
         desiredAimPosition.y = transform.position.y + 1;

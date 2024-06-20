@@ -2083,8 +2083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minCameraDistance: 1
-  maxCameraDistance: 1.5
-  aimSensitivity: 3.76
+  maxCameraDistance: 3
+  aimSensitivity: 4
   aim: {fileID: 680102083}
   aimLayerMask:
     serializedVersion: 2
