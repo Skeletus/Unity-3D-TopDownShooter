@@ -23,6 +23,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private LayerMask aimLayerMask;
 
     private Vector2 aimInput;
+    private RaycastHit lastKnowMouseHit;
 
     private void Start()
     {
@@ -60,10 +61,11 @@ public class PlayerAim : MonoBehaviour
 
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, aimLayerMask))
         {
+            lastKnowMouseHit = hitInfo;
             return hitInfo;
         }
 
-        return default;
+        return lastKnowMouseHit;
     }
 
     private void AssignInputEvents()
