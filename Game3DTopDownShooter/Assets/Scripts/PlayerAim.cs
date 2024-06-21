@@ -42,7 +42,7 @@ public class PlayerAim : MonoBehaviour
     {
         float actualMaxCameraDistance = player.movement.moveInput.y < -.5f ? minCameraDistance : maxCameraDistance;
         
-        Vector3 desiredAimPosition = GetMousePosition();
+        Vector3 desiredAimPosition = GetMouseHitInfo().point;
         Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
 
         float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
@@ -54,16 +54,16 @@ public class PlayerAim : MonoBehaviour
         return desiredAimPosition;
     }
 
-    public Vector3 GetMousePosition()
+    public RaycastHit GetMouseHitInfo()
     {
         Ray ray = Camera.main.ScreenPointToRay(aimInput);
 
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, aimLayerMask))
         {
-            return hitInfo.point;
+            return hitInfo;
         }
 
-        return Vector3.zero;
+        return default;
     }
 
     private void AssignInputEvents()
