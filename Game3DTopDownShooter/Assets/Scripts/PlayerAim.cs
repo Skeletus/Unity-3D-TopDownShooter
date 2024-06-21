@@ -8,6 +8,11 @@ public class PlayerAim : MonoBehaviour
     private PlayerControls controls;
 
     [Header("Aim info")]
+    [SerializeField] private Transform aim;
+
+    [Header("Camera control")]
+    [SerializeField] private Transform cameraTarget;
+
     [Range(.5f, 1f)]
     [SerializeField] private float minCameraDistance = 1.5f;
 
@@ -15,11 +20,10 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private float maxCameraDistance = 4f;
 
     [Range(3f, 5f)]
-    [SerializeField] private float aimSensitivity = 5f;
+    [SerializeField] private float cameraSensitivity = 5f;
 
     [Space]
 
-    [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayerMask;
 
     private Vector2 aimInput;
@@ -33,26 +37,26 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        aim.position = Vector3.Lerp(
-            aim.position,
-            DesiredAimPosition(),
-            aimSensitivity * Time.deltaTime);
+        cameraTarget.position = Vector3.Lerp(
+            cameraTarget.position,
+            DesiredCameraPosition(),
+            cameraSensitivity * Time.deltaTime);
     }
 
-    private Vector3 DesiredAimPosition()
+    private Vector3 DesiredCameraPosition()
     {
         float actualMaxCameraDistance = player.movement.moveInput.y < -.5f ? minCameraDistance : maxCameraDistance;
         
-        Vector3 desiredAimPosition = GetMouseHitInfo().point;
-        Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
+        Vector3 desiredCameraPosition = GetMouseHitInfo().point;
+        Vector3 aimDirection = (desiredCameraPosition - transform.position).normalized;
 
-        float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
+        float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredCameraPosition);
         float clampedDistance = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, actualMaxCameraDistance);
 
-        desiredAimPosition = transform.position + aimDirection * clampedDistance;
-        desiredAimPosition.y = transform.position.y + 1;
+        desiredCameraPosition = transform.position + aimDirection * clampedDistance;
+        desiredCameraPosition.y = transform.position.y + 1;
 
-        return desiredAimPosition;
+        return desiredCameraPosition;
     }
 
     public RaycastHit GetMouseHitInfo()

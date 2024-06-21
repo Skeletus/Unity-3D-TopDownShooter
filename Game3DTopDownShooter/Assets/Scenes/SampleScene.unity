@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 680102081}
   - component: {fileID: 680102080}
   m_Layer: 0
-  m_Name: aimSphere
+  m_Name: cameraFollowTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,10 +2082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20182616fa3cdf41bff946a334eafc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim: {fileID: 0}
+  cameraTarget: {fileID: 680102083}
   minCameraDistance: 1
   maxCameraDistance: 3
-  aimSensitivity: 4
-  aim: {fileID: 680102083}
+  cameraSensitivity: 4
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 192
