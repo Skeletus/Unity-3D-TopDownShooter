@@ -6,6 +6,10 @@ public class PlayerWeaponController : MonoBehaviour
 {
     private Player playerControls;
 
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private Transform gunPoint;
+
     private void Start()
     {
         playerControls = GetComponent<Player>();
