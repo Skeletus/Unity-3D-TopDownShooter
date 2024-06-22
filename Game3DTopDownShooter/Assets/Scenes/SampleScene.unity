@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3143303483793014842, guid: 1c53b23c2921c5149b490997a0933ffc, type: 3}
-  bulletSpeed: 3
+  bulletSpeed: 17
   gunPoint: {fileID: 1410115056}
 --- !u!114 &1629620263
 MonoBehaviour:
