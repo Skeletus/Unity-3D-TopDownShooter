@@ -190,7 +190,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164828635}
-  m_LocalRotation: {x: -0.4055798, y: 0.579228, z: 0.579228, w: 0.4055798}
+  m_LocalRotation: {x: -0.3578076, y: 0.63572395, z: 0.51237833, w: 0.45309746}
   m_LocalPosition: {x: 0, y: 0.09466175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1856,7 +1856,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410115055}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.009608998, y: 0.000048547976, z: -0.000006109475, w: 0.99995387}
   m_LocalPosition: {x: -0.0003, y: 0.0414, z: 0.1804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2120,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aim: {fileID: 1862927905}
+  isAimingPrecisly: 1
   cameraTarget: {fileID: 680102083}
   minCameraDistance: 1
   maxCameraDistance: 3
