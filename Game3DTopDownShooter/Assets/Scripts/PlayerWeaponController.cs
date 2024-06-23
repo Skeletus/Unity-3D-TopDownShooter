@@ -10,6 +10,9 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunPoint;
 
+    [SerializeField] private Transform weaponHolder;
+    [SerializeField] private Transform aim;
+
     private void Start()
     {
         playerControls = GetComponent<Player>();
@@ -23,5 +26,14 @@ public class PlayerWeaponController : MonoBehaviour
         Destroy(newBullet, 10);
 
         GetComponentInChildren<Animator>().SetTrigger("Fire");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(weaponHolder.position, weaponHolder.position + weaponHolder.forward * 25);
+
+        Gizmos.color = Color.yellow;
+
+        Gizmos.DrawLine(gunPoint.position, gunPoint.position + gunPoint.forward * 25);
     }
 }
