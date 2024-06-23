@@ -20,6 +20,9 @@ public class PlayerWeaponController : MonoBehaviour
     }
     private void Shoot()
     {
+        weaponHolder.LookAt(aim);
+        gunPoint.LookAt(aim);
+
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
         newBullet.GetComponent<Rigidbody>().velocity = gunPoint.forward * bulletSpeed;
 
