@@ -20,15 +20,23 @@ public class PlayerWeaponController : MonoBehaviour
     }
     private void Shoot()
     {
-        weaponHolder.LookAt(aim);
-        gunPoint.LookAt(aim);
-
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
-        newBullet.GetComponent<Rigidbody>().velocity = gunPoint.forward * bulletSpeed;
+        newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed;
 
         Destroy(newBullet, 10);
 
         GetComponentInChildren<Animator>().SetTrigger("Fire");
+    }
+
+    private Vector3 BulletDirection()
+    {
+        Vector3 direction = (aim.position - gunPoint.position).normalized;
+        direction.y = 0;
+
+        weaponHolder.LookAt(aim);
+        gunPoint.LookAt(aim);
+
+        return direction;
     }
 
     private void OnDrawGizmos()
@@ -37,6 +45,6 @@ public class PlayerWeaponController : MonoBehaviour
 
         Gizmos.color = Color.yellow;
 
-        Gizmos.DrawLine(gunPoint.position, gunPoint.position + gunPoint.forward * 25);
+        Gizmos.DrawLine(gunPoint.position, gunPoint.position + BulletDirection() * 25);
     }
 }
