@@ -39,18 +39,31 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            isAimingPrecisly = !isAimingPrecisly;
+        }
+
+        UpdateAimPosition();
+        UpdateCameraPosition();
+    }
+
+    private void UpdateCameraPosition()
+    {
+        cameraTarget.position = Vector3.Lerp(
+                    cameraTarget.position,
+                    DesiredCameraPosition(),
+                    cameraSensitivity * Time.deltaTime);
+    }
+
+    private void UpdateAimPosition()
+    {
         aim.position = GetMouseHitInfo().point;
 
         if (!isAimingPrecisly)
         {
             aim.position = new Vector3(aim.position.x, transform.position.y + 1, aim.position.z);
         }
-        
-
-        cameraTarget.position = Vector3.Lerp(
-            cameraTarget.position,
-            DesiredCameraPosition(),
-            cameraSensitivity * Time.deltaTime);
     }
 
     public bool CanAimPrecisly()
