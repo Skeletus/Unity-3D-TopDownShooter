@@ -28,12 +28,12 @@ public class PlayerWeaponController : MonoBehaviour
         GetComponentInChildren<Animator>().SetTrigger("Fire");
     }
 
-    private Vector3 BulletDirection()
+    public Vector3 BulletDirection()
     {
         Vector3 direction = (aim.position - gunPoint.position).normalized;
 
-        if(playerControls.playerAim.CanAimPrecisly() == false &&
-            playerControls.playerAim.GetTarget() == null)
+        if(playerControls.aim.CanAimPrecisly() == false &&
+            playerControls.aim.GetTarget() == null)
         {
             direction.y = 0;
         }
@@ -43,4 +43,6 @@ public class PlayerWeaponController : MonoBehaviour
 
         return direction;
     }
+
+    public Transform GetGunPoint() => gunPoint;
 }
