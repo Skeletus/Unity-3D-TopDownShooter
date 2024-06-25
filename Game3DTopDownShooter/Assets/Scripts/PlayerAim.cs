@@ -10,7 +10,6 @@ public class PlayerAim : MonoBehaviour
     [Header("Aim visuals")]
     // this component is on the weapon holder (child of player)
     [SerializeField] private LineRenderer aimLaser;
-    [SerializeField] private float tipLength = .5f;
 
     [Header("Aim info")]
     [SerializeField] private Transform aim;
@@ -63,6 +62,8 @@ public class PlayerAim : MonoBehaviour
     {
         Transform gunPoint = player.weapon.GetGunPoint();
         Vector3 laserDirection = player.weapon.BulletDirection();
+
+        float laserTipLength = .5f;
         float gunDistance = 4f;
 
         Vector3 endPoint = gunPoint.position + laserDirection * gunDistance;
@@ -70,11 +71,12 @@ public class PlayerAim : MonoBehaviour
         if(Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, gunDistance))
         {
             endPoint = hit.point;
+            laserTipLength = 0;
         }
 
         aimLaser.SetPosition(0, gunPoint.position);
         aimLaser.SetPosition(1, endPoint);
-        aimLaser.SetPosition(2, endPoint + laserDirection * tipLength);
+        aimLaser.SetPosition(2, endPoint + laserDirection * laserTipLength);
     }
 
     public Transform GetTarget()
