@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 733368356}
   - component: {fileID: 733368355}
   - component: {fileID: 733368359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 1133373459}
   - component: {fileID: 1133373458}
   - component: {fileID: 1133373457}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,7 +1576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133373456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.38, y: 2.47, z: 3.88}
+  m_LocalPosition: {x: 0.38, y: 1.566, z: 5.724}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1782,7 +1782,7 @@ GameObject:
   - component: {fileID: 1250585462}
   - component: {fileID: 1250585461}
   - component: {fileID: 1250585460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2338,7 +2338,7 @@ GameObject:
   - component: {fileID: 1490815079}
   - component: {fileID: 1490815078}
   - component: {fileID: 1490815077}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2593,13 +2593,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim: {fileID: 1862927905}
   isAimingPrecisly: 1
+  isLockingToTarget: 0
   cameraTarget: {fileID: 680102083}
   minCameraDistance: 1
   maxCameraDistance: 3
   cameraSensitivity: 4
   aimLayerMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 2240
 --- !u!1 &1702898574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,7 +2658,7 @@ GameObject:
   - component: {fileID: 1738513066}
   - component: {fileID: 1738513065}
   - component: {fileID: 1738513064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3094,7 +3095,7 @@ GameObject:
   - component: {fileID: 2111980202}
   - component: {fileID: 2111980201}
   - component: {fileID: 2111980200}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Target (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
