@@ -43,15 +43,4 @@ public class PlayerWeaponController : MonoBehaviour
 
         return direction;
     }
-
-    /*
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(weaponHolder.position, weaponHolder.position + weaponHolder.forward * 25);
-
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawLine(gunPoint.position, gunPoint.position + BulletDirection() * 25);
-    }
-    */
 }

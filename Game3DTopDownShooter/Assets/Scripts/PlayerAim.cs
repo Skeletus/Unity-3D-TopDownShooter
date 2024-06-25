@@ -44,6 +44,11 @@ public class PlayerAim : MonoBehaviour
         {
             isAimingPrecisly = !isAimingPrecisly;
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            isLockingToTarget = !isLockingToTarget;
+        }
+
 
         UpdateAimPosition();
         UpdateCameraPosition();
