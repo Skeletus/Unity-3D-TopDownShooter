@@ -11,6 +11,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private Transform aim;
 
     [SerializeField] private bool isAimingPrecisly;
+    [SerializeField] private bool isLockingToTarget;
 
     [Header("Camera control")]
     [SerializeField] private Transform cameraTarget;
@@ -48,6 +49,18 @@ public class PlayerAim : MonoBehaviour
         UpdateCameraPosition();
     }
 
+    public Transform GetTarget()
+    {
+        Transform target = null;
+
+        if (GetMouseHitInfo().transform.GetComponent<Target>() != null)
+        {
+            target = GetMouseHitInfo().transform;
+        }
+
+        return target;
+    }
+
     private void UpdateCameraPosition()
     {
         cameraTarget.position = Vector3.Lerp(
@@ -58,6 +71,14 @@ public class PlayerAim : MonoBehaviour
 
     private void UpdateAimPosition()
     {
+        Transform target = GetTarget();
+
+        if(target != null && isLockingToTarget)
+        {
+            aim.position = transform.position;
+            return;
+        }
+
         aim.position = GetMouseHitInfo().point;
 
         if (!isAimingPrecisly)

@@ -32,7 +32,8 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Vector3 direction = (aim.position - gunPoint.position).normalized;
 
-        if(playerControls.playerAim.CanAimPrecisly() == false)
+        if(playerControls.playerAim.CanAimPrecisly() == false &&
+            playerControls.playerAim.GetTarget() == null)
         {
             direction.y = 0;
         }
