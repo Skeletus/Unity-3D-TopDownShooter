@@ -67,6 +67,11 @@ public class PlayerAim : MonoBehaviour
 
         Vector3 endPoint = gunPoint.position + laserDirection * gunDistance;
 
+        if(Physics.Raycast(gunPoint.position, laserDirection, out RaycastHit hit, gunDistance))
+        {
+            endPoint = hit.point;
+        }
+
         aimLaser.SetPosition(0, gunPoint.position);
         aimLaser.SetPosition(1, endPoint);
         aimLaser.SetPosition(2, endPoint + laserDirection * tipLength);
