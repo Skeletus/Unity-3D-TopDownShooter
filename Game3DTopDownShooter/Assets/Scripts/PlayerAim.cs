@@ -58,6 +58,8 @@ public class PlayerAim : MonoBehaviour
         UpdateCameraPosition();
     }
 
+    public Transform GetAim() => aim;
+
     private void UpdateAimLaser()
     {
         Transform gunPoint = player.weapon.GetGunPoint();
@@ -117,14 +119,7 @@ public class PlayerAim : MonoBehaviour
         }
     }
 
-    public bool CanAimPrecisly()
-    {
-        if (isAimingPrecisly)
-        {
-            return true;
-        }
-        return false;
-    }
+    public bool CanAimPrecisly() => isAimingPrecisly;
 
     private Vector3 DesiredCameraPosition()
     {
